@@ -18,7 +18,7 @@ python main.py config.yaml
 Config the ```w_ldmk``` to ```0``` to get results of the vanilla N-ICP.
 
 
-#### moose example before and after registration
+Point clouds before and after registration
 <img src="img/before.png" alt="drawing" width="500"/>
 <br> 
 <img src="img/after.png" alt="drawing" width="500"/>
