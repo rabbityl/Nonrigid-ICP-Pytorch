@@ -19,6 +19,7 @@ Config the ```w_ldmk``` to ```0``` to get results of the vanilla N-ICP.
 
 
 Point clouds before and after registration
+<br> 
 <img src="img/before.png" alt="drawing" width="400"/>
 <br> 
 <img src="img/after.png" alt="drawing" width="400"/>
