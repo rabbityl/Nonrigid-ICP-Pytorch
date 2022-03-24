@@ -1,0 +1,16 @@
+iters: 500
+gpu_mode: True
+lr: 0.5
+deformation_model: ED
+w_silh: 0.1
+w_ldmk: 1
+w_arap: 1
+w_chamfer: 0.1
+w_depth: 0
+
+
+#demo data
+src_depth: './demo/moose6OK9_AttackTrotRM/depth/cam1_0015.png'
+tgt_depth: './demo/moose6OK9_AttackTrotRM/depth/cam1_0009.png'
+intrinsics: "./demo/moose6OK9_AttackTrotRM/cam1intr.txt"
+correspondence: "./demo/moose6OK9_AttackTrotRM/landmark/moose_match_pred.npz"

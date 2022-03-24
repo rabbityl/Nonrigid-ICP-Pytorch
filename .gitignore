@@ -1,0 +1,17 @@
+cxx/build
+cxx/dist
+cxx/*egg-info
+*.so
+.idea
+*.pth
+*.obj
+*.gif
+*.xml
+*.zip
+#data/
+*/pretrained/
+__pycache__/
+
+
+
+
