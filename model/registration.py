@@ -83,13 +83,10 @@ class Registration():
 
             landmarks = (s_ldmk, t_ldmk)
 
-
-
+        self.visualize_results(self.tgt_pcd)
         warped_pcd = self.solve(  landmarks=landmarks)
         self.visualize_results( self.tgt_pcd, warped_pcd)
 
-
-        return warped_pcd, tgt_pcd
 
 
     def solve(self, **kwargs ):
@@ -187,18 +184,21 @@ class Registration():
         return pix_2_pcd_map
 
 
-    def visualize_results(self, tgt_pcd, warped_pcd):
+    def visualize_results(self, tgt_pcd, warped_pcd=None):
 
         import mayavi.mlab as mlab
         c_red = (224. / 255., 0 / 255., 125 / 255.)
         c_pink = (224. / 255., 75. / 255., 232. / 255.)
         c_blue = (0. / 255., 0. / 255., 255. / 255.)
-        scale_factor = 0.0075
+        scale_factor = 0.007
         source_pcd = self.source_pcd.cpu().numpy()
         tgt_pcd = tgt_pcd.cpu().numpy()
-        warped_pcd = warped_pcd.detach().cpu().numpy()
+
         # mlab.points3d(s_pc[ :, 0]  , s_pc[ :, 1],  s_pc[:,  2],  scale_factor=scale_factor , color=c_blue)
-        mlab.points3d(source_pcd[ :, 0], source_pcd[ :, 1], source_pcd[:,  2],resolution=4, scale_factor=scale_factor , color=c_red)
-        mlab.points3d(warped_pcd[ :, 0], warped_pcd[ :, 1], warped_pcd[:,  2], resolution=4, scale_factor=scale_factor , color=c_blue)
-        mlab.points3d(tgt_pcd[ :, 0] , tgt_pcd[ :, 1], tgt_pcd[:,  2],resolution=4, scale_factor=scale_factor , color=c_pink)
+        if warped_pcd is None:
+            mlab.points3d(source_pcd[ :, 0], source_pcd[ :, 1], source_pcd[:,  2],resolution=4, scale_factor=scale_factor , color=c_red)
+        else:
+            warped_pcd = warped_pcd.detach().cpu().numpy()
+            mlab.points3d(warped_pcd[ :, 0], warped_pcd[ :, 1], warped_pcd[:,  2], resolution=4, scale_factor=scale_factor , color=c_pink)
+        mlab.points3d(tgt_pcd[ :, 0] , tgt_pcd[ :, 1], tgt_pcd[:,  2],resolution=4, scale_factor=scale_factor , color=c_blue)
         mlab.show()
